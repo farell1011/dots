@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+DIR="$HOME/.config/polybar"
+killall -q polybar
+while pgrep -u $UID -x polybar >/dev/null; do sleep 4; done
+
+if [ $1 = awesome ] ; then
+polybar -q awesometop -c "$DIR"/config.ini &
+polybar -q awesomebottom -c "$DIR"/config.ini &
+elif [ $1 = i3 ] ; then
+polybar -q i3top -c "$DIR"/config.ini &
+polybar -q i3bottom -c "$DIR"/config.ini &
+else
+  echo "WTF ???"
+fi
+echo "Bars launched..."

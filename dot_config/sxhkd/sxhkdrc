@@ -1,0 +1,114 @@
+# Terminal
+super + Return
+	urxvt
+	
+# Tmux
+super + ctrl + shift + Return
+	urxvt -e bash -c "tmux -q has-session && exec tmux attach-session -d || exec tmux new-session -s work"
+
+# Terminal scratchpad untuk menampilkan super + n
+super + z
+	urxvt -title hidden -g 160x30
+
+# Rofi
+super + p
+	rofi -no-lazy-grab -show drun -theme ~/.config/rofi/row_center
+
+# window
+super + w
+	rofi -no-lazy-grab -show window -theme ~/.config/rofi/row_center
+
+# iptv
+super + ctrl + shift + m
+	~/.config/rofi/dmenu_iptv
+
+# poweroff
+super + shift + q
+	~/.config/rofi/dpowermenu
+
+# File Manager
+super + slash
+	thunar
+
+# chromium
+super + i
+	chromium
+
+# chromiumtor
+super + shift + i
+	env LD_PRELOAD='/usr/lib/libhardened_malloc.so' chromium --proxy-server='socks5://127.0.0.1:9050'
+
+# chromiumburp
+super + ctrl + i
+	chromium --proxy-server='127.0.0.1:8081'
+
+# mousepad
+super + a
+	mousepad
+
+# gedit
+super + shift + a
+	gedit
+
+# burpsuite
+super + shift + b
+	burpsuite --disable-auto-update
+
+# tor-browser
+super + shift + t
+	tor-browser
+
+# screencast
+alt + Print
+	peek
+
+# screenshots
+Print
+	~/.config/rofi/screenshot
+super + Print
+	scrot -u ~/Pictures/$(date +%F).png; notify-send 'Scrot' 'Screen has been captured!'
+super + shift + Print
+	scrot -s ~/Pictures/$(date +%F).png; notify-send 'Scrot' 'Screen has been captured!'
+super + ctrl + Print
+	scrot -d 5 ~/Pictures/$(date +%F).png; notify-send 'Scrot' 'Screen has been captured!'
+
+# audio
+super + XF86AudioMute
+	pactl set-source-mute @DEFAULT_SOURCE@ toggle
+XF86AudioMute
+	pactl set-sink-mute @DEFAULT_SINK@ toggle
+XF86AudioLowerVolume
+	pactl set-sink-volume @DEFAULT_SINK@ -5%
+XF86AudioRaiseVolume
+	pactl set-sink-volume @DEFAULT_SINK@ +5%
+	
+# mpd
+ctrl + shift + m
+	urxvt -geometry 80x20 -name 'ncmpcpp' -e ncmpcpp --screen playlist
+
+alt + shift + m
+	urxvt -geometry 80x20 -name 'ncmpcpp' -e ncmpcpp --screen visualizer
+
+super + XF86AudioRaiseVolume
+	mpc volume +2
+super + XF86AudioLowerVolume
+	mpc volume -2
+alt + ctrl + Left
+	mpc prev
+alt + ctrl + Right
+	mpc next
+alt + ctrl + Down
+	mpc stop
+alt + ctrl + Up	
+	mpc play	
+
+# Lock
+ctrl + shift + l
+	blurlock
+
+# brightness
+XF86MonBrightnessUp
+	xbacklight -inc 10
+
+XF86MonBrightnessDown
+	xbacklight -dec 10

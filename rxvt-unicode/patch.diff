@@ -1,0 +1,11 @@
+diff --color -up --recursive --text rxvt-unicode-9.22/src/rxvtperl.xs rxvt-unicode-9.22.diff/src/rxvtperl.xs
+--- rxvt-unicode-9.22/src/rxvtperl.xs	2015-06-04 23:38:04.000000000 +0700
++++ rxvt-unicode-9.22.diff/src/rxvtperl.xs	2021-02-12 00:38:31.568020899 +0700
+@@ -376,6 +376,7 @@ rxvt_perl_interp::~rxvt_perl_interp ()
+ {
+   if (perl)
+     {
++      localise_env set_environ (perl_environ);    
+       perl_destruct (perl);
+       perl_free (perl);
+       PERL_SYS_TERM ();

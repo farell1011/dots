@@ -1,0 +1,24 @@
+/* Termite configuration */
+VteTerminal, vte-terminal {
+    /*padding: 30px;*/
+    padding: 18px;
+}
+
+/* Textboxes */
+GtkEntry {
+    padding: 6px 6px 6px 6px;
+    border-width: 0px;
+    border-style: solid;
+    border-radius: 0px;
+    border-color: #070e12;
+    /*Disable shadow*/
+    box-shadow: 0 0 0 0px;
+    /*If font is unset, the current system font will be used.*/
+    font-family: monospace;
+    font-size: 9pt;
+}
+scrolledwindow { border-width: 0px; }
+entry { border:none }
+.undershoot.top, .undershoot.right, .undershoot.bottom, .undershoot.left { background-image: none; }
+window { background-color: rgba(248, 253, 239, 0.2);  /* 50% transparent */ }
+

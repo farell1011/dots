@@ -1,0 +1,46 @@
+diff --color -up --recursive --text dwm.ori/config.def.h dwm/config.def.h
+--- dwm.ori/config.def.h	2021-02-02 14:01:21.460207184 +0700
++++ dwm/config.def.h	2021-02-02 13:56:24.153344121 +0700
+@@ -106,6 +106,7 @@ static Key keys[] = {
+ { MODKEY,			XK_m,		scratchpad_hide,	{0} },		/* patch scratchpad */
+ { MODKEY|ControlMask,		XK_m,		scratchpad_remove,	{0} },		/* patch scratchpad */
+ { MODKEY,			XK_s,		togglesticky,		{0} },		/* patch sticky */
++{ MODKEY,			XK_c,		center,			{0} },		/* patch center floating */
+ { MODKEY,                       XK_f,		togglefullscreen,	{0} },		/* patch togglefullscreen */
+ { MODKEY,                       XK_z, spawn, SHCMD("urxvt -title hidden -g 160x30") },	/* patch terminal scratchpad */
+ };
+diff --color -up --recursive --text dwm.ori/dwm.c dwm/dwm.c
+--- dwm.ori/dwm.c	2021-02-02 13:58:48.566818373 +0700
++++ dwm/dwm.c	2021-02-02 14:00:56.983513976 +0700
+@@ -156,6 +156,7 @@ static void arrangemon(Monitor *m);
+ static void attach(Client *c);
+ static void attachstack(Client *c);
+ static void buttonpress(XEvent *e);
++static void center(const Arg *unused);
+ static void checkotherwm(void);
+ static void cleanup(void);
+ static void cleanupmon(Monitor *mon);
+@@ -479,6 +480,23 @@ buttonpress(XEvent *e)
+ }
+ 
+ void
++center(const Arg *unused)
++{
++	Client *c;
++
++	if (selmon->lt[selmon->sellt]->arrange && !(selmon->sel && selmon->sel->isfloating))
++		return;
++
++	c = selmon->sel;
++
++	resizeclient(c,
++	             selmon->wx + (selmon->ww / 2 - WIDTH(c) / 2),
++	             selmon->wy + (selmon->wh / 2 - HEIGHT(c) / 2),
++	             c->w,
++	             c->h);
++}
++
++void
+ checkotherwm(void)
+ {
+ 	xerrorxlib = XSetErrorHandler(xerrorstart);
