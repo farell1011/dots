@@ -3,6 +3,7 @@
 os > arch linux
 wm > dwm
 bar > polybar
+hotkey > sxhkd
 terminal > rxvt-unicode
 compositor > picom
 launcher > rofi
@@ -46,7 +47,15 @@ launcher > rofi
 19. [shiftview](https://lists.suckless.org/dev/1104/7590.html)
 
 ##### Instal
-###### install depans gunakan [yay](https://github.com/Jguer/yay#installation)
+
+###### install [yay](https://github.com/Jguer/yay#installation)
+	sudo pacman -S --needed git base-devel
+	git clone https://aur.archlinux.org/yay.git
+	cd yay
+	makepkg -si
+	cd ~/
+
+###### install depans
 	curl -o installdepends.txt https://raw.githubusercontent.com/farell1011/dots/main/installdepends.txt
 	yay -S --needed --noconfirm $(grep -E "^[a-z]" ./installdepends.txt)
 
@@ -70,12 +79,16 @@ launcher > rofi
 	makepkg -g >> PKGBUILD
 	makepkg --nobuild
 	makepkg -i --noextract
+	cd ~/
 
 ##### Setup
+
 ###### group wheel sudo tanpa password edit /etc/pam.d/sudo tambahkan pada baris pertama
+	sudo nano /etc/pam.d/sudo
 	auth           sufficient      pam_wheel.so trust use_uid
 
 ###### edit /etc/resolv.conf (untuk dnscrypt)
+	sudo nano /etc/resolv.conf
 	nameserver 127.0.0.1
 
 ###### write-protect (agar tdk bisa dirubah oleh network manager)
@@ -95,6 +108,7 @@ launcher > rofi
 	* kita bisa menambah patch/merubah keybinding dan compile ulang
 
 ###### tambahkan pada /etc/geoclue/geoclue.conf
+	sudo nano /etc/geoclue/geoclue.conf
 	[redshift]
 	allowed=true
 	system=false
@@ -208,6 +222,7 @@ launcher > rofi
 os > arch linux
 wm > awesome, i3-gaps
 bar > polybar
+hotkey > sxhkd
 terminal > rxvt-unicode
 compositor > picom
 launcher > rofi
