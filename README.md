@@ -117,7 +117,7 @@ launcher > rofi
 ###### tmux tpm plugin
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 	tmux
-	Press `prefix` + <kbd>I</kbd> (capital i, as in **I**nstall) to fetch the plugin.
+	ctrl + b + shift + i (to fetch the plugin)
 
 ##### sxhkd
 <kbd>super</kbd>  = <kbd>Windows Key</kbd> 
