@@ -34,6 +34,7 @@ rxvt-unicode-terminfo
 scrot
 sxhkd
 thunar
+tmux
 tor
 ttf-dejavu
 unclutter
