@@ -56,8 +56,10 @@ launcher > rofi
 	cd ~/
 
 ###### install depans
-	curl -o installdepends.txt https://raw.githubusercontent.com/farell1011/dots/main/installdepends.txt
-	yay -S --needed --noconfirm $(grep -E "^[a-z]" ./installdepends.txt)
+	curl -o install.txt https://raw.githubusercontent.com/farell1011/dots/main/install.txt
+	curl -o install https://raw.githubusercontent.com/farell1011/dots/main/install
+	chmod +x install
+	./install
 
 ###### apply config to ~/
 	chezmoi init --apply --verbose https://github.com/farell1011/dots.git
@@ -87,12 +89,15 @@ launcher > rofi
 	sudo nano /etc/pam.d/sudo
 	auth           sufficient      pam_wheel.so trust use_uid
 
-###### edit /etc/resolv.conf (untuk dnscrypt)
-	sudo nano /etc/resolv.conf
-	nameserver 127.0.0.1
+###### buat config rc-manager.conf
+	sudo nano /etc/NetworkManager/conf.d/rc-manager.conf
+	[main]
+	rc-manager=resolvconf
 
-###### write-protect (agar tdk bisa dirubah oleh network manager)
-	sudo chattr +i /etc/resolv.conf
+##### edit openresolv.conf
+	sudo nano /etc/resolvconf.conf
+	resolv_conf=/etc/resolv.conf
+	name_servers=127.0.0.1
 
 ###### enable service
 	sudo systemctl enable dnscrypt-proxy.service

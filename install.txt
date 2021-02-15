@@ -22,6 +22,7 @@ ncmpcpp
 network-manager-applet
 networkmanager
 oh-my-zsh-git
+openresolv
 peek
 picom
 polybar-dwm-module
