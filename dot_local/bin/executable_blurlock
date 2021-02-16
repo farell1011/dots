@@ -1,6 +1,6 @@
 #!/bin/bash
 # /usr/bin/blurlock
-
+# depens imagemagick i3lock
 # take screenshot
 import -window root /tmp/screenshot.png
 
