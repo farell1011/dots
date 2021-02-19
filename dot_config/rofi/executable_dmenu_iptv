@@ -6,7 +6,6 @@
 # Last Modified Date: Senin, 01/02/2021 11:52 WIB
 # Last Modified By  : M. Nabil Adani <nblid48@gmail.com>
 # writer script     : https://github.com/mnabila/dotfiles/blob/master/scripts/dmenu_iptv
-# depens rofi mpv jq libnotify
 
 DMENU="rofi -dmenu -i -p IPTV -theme ~/.config/rofi/row_center"
 IPTV='''

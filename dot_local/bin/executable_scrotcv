@@ -3,7 +3,6 @@
 # How this script work?
 # By put the last file on directory screenshot, and process it with imagemagick
 # Please wite your dir with ~/ first
-# depens imagemagick optipng ruby colord
 screenshot_dir    = '~/Pictures'
 Dir.chdir(File.expand_path(screenshot_dir))
 ss_dir            = Dir.pwd
