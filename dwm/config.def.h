@@ -61,6 +61,7 @@ static const Rule rules[] = {
 { "Rofi",			 NULL,		NULL,				0,		 1, 		0,		0,		-1 },
 { "Xarchiver",			 NULL,		NULL,				0,		 1, 		0,		0,		-1 },
 { "xpdf",			 NULL,		NULL,				0,		 1, 		0,		0,		-1 },
+{ "XpdfReader",			 NULL,		NULL,				0,		 1, 		0,		0,		-1 },
 { "Epdfview",			 NULL,		NULL,				0,		 1, 		0,		0,		-1 },
 { "Lxappearance",		 NULL,		NULL,				0,		 1, 		0,		0,		-1 },
 { "burp-StartBurp",		 NULL,		NULL,				0,		 1, 		0,		0,		-1 },
