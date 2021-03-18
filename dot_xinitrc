@@ -52,10 +52,9 @@ export DBUS_SESSION_BUS_ADDRESS="unix:path=${XDG_RUNTIME_DIR}/bus"
 (sleep 5s && redshift-gtk) &
 (sleep 6s && nm-applet --sm-disable) &
 (sleep 7s && blueman-applet) &
-#xautolock -time 60 -locker blurlock &
 (sleep 8s && unclutter -root) &
 (sleep 9s && dunst) &
-
+(sleep 10s && xautolock -time 60 -locker blurlock) &
 [ ! -s ~/.config/mpd/pid ] && mpd &
 
 eval $(ssh-agent)
