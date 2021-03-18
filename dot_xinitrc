@@ -31,6 +31,8 @@ fi
 
 TERM=xterm-256color
 LS_COLORS='rs=0:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:tw=30;42:ow=34;42:st=37;44:ex=01;32:';
+PERL_DESTRUCT_LEVEL=2
+export PERL_DESTRUCT_LEVEL
 export LS_COLORS
 export PATH="${PATH}:$HOME/.local/bin"
 export TERMINAL=urxvt
@@ -39,22 +41,24 @@ export EDITOR=nano
 export VISUAL=nano
 export AWT_TOOLKIT=MToolkit
 export MSF_DATABASE_CONFIG="$HOME/.msf4/database.yml"
-PERL_DESTRUCT_LEVEL=2
-export PERL_DESTRUCT_LEVEL
 export RXVT_SOCKET="$HOME/.urxvt/urxvtd-`hostname`"
+export XDG_RUNTIME_DIR="/run/user/$UID"
+export DBUS_SESSION_BUS_ADDRESS="unix:path=${XDG_RUNTIME_DIR}/bus"
 
-urxvtd &
-picom --config ~/.config/picom/picom.conf &
-unclutter -root &
-xautolock -time 60 -locker blurlock &
-dunst &
-redshift-gtk &
-nm-applet --sm-disable &
-blueman-applet &
-feh --bg-fill ~/Pictures/wallpaper/wallpaperbetter.jpg &
-sxhkd -c ~/.config/sxhkd/sxhkdrc &
+(sleep 1s && feh --bg-fill ~/Pictures/wallpaper/wallpaperbetter.jpg) &
+(sleep 2s && picom --config ~/.config/picom/picom.conf) &
+(sleep 3s && urxvtd) &
+(sleep 4s && sxhkd -c ~/.config/sxhkd/sxhkdrc) &
+(sleep 5s && redshift-gtk) &
+(sleep 6s && nm-applet --sm-disable) &
+(sleep 7s && blueman-applet) &
+#xautolock -time 60 -locker blurlock &
+(sleep 8s && unclutter -root) &
+(sleep 9s && dunst) &
 
-[ ! -s ~/.config/mpd/pid ] && mpd
+[ ! -s ~/.config/mpd/pid ] && mpd &
+
+eval $(ssh-agent)
 
 session=${1:-dwm}
 case $session in
